@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lixwucs.muhu.dao.ChannelsMapper" >
+  <resultMap id="BaseResultMap" type="com.lixwucs.muhu.bean.Channels" >
+    <result column="channel_id" property="channelId" jdbcType="INTEGER" />
+    <result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+    <result column="notices_id" property="noticesId" jdbcType="BIGINT" />
+    <result column="channel_parent_id" property="channelParentId" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lixwucs.muhu.bean.Channels" >
+    insert into channels (channel_id, channel_name, notices_id, 
+      channel_parent_id)
+    values (#{channelId,jdbcType=INTEGER}, #{channelName,jdbcType=VARCHAR}, #{noticesId,jdbcType=BIGINT}, 
+      #{channelParentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lixwucs.muhu.bean.Channels" >
+    insert into channels
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="channelName != null" >
+        channel_name,
+      </if>
+      <if test="noticesId != null" >
+        notices_id,
+      </if>
+      <if test="channelParentId != null" >
+        channel_parent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelId != null" >
+        #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="channelName != null" >
+        #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="noticesId != null" >
+        #{noticesId,jdbcType=BIGINT},
+      </if>
+      <if test="channelParentId != null" >
+        #{channelParentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="channel" parameterType="int" resultType="com.lixwucs.muhu.bean.Channels" >
+    select channel_id as channelId , channel_name as channelName, notices_id as noticesId, channel_parent_id as channelParentId from
+    channels
+    <where>
+       channel_parent_id = #{channelParentId}
+    </where>
+<!--    <choose>-->
+<!--      <when test="sort != null and sort.trim() != ''">-->
+<!--        order by ${channel_id}-->
+<!--      </when>-->
+<!--      <otherwise>-->
+<!--        order by channel_id desc-->
+<!--      </otherwise>-->
+<!--    </choose>-->
+<!--    <if test="offset != null and limit != null">-->
+<!--      limit #{offset}, #{limit}-->
+<!--    </if>-->
+  </select>
+
+  <select id="findAll" resultType="com.lixwucs.muhu.bean.Channels" >
+    select *  from  channels
+<!--    <where>-->
+<!--      <if test="channelId != null and channelId != ''"> and channel_id = #{channelId} </if>-->
+<!--      <if test="channelName != null and channelName != ''"> and channel_name = #{channelName} </if>-->
+<!--      <if test="noticesId != null and noticesId != ''"> and notices_id = #{noticesId} </if>-->
+<!--      <if test="channelParentId != null and channelParentId != ''"> and channel_parent_id = #{channelParentId} </if>-->
+<!--    </where>-->
+
+  </select>
+</mapper>
