@@ -1,4 +1,4 @@
-package com.lixwucs.muhu.service;
+package com.lixwucs.muhu.service.iservice;
 
 import com.lixwucs.muhu.bean.Channels;
 

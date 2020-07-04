@@ -2,7 +2,12 @@ package com.lixwucs.muhu.bean;
 
 import java.util.Date;
 
-public class Notices {
+/**
+ * @author helloLi
+ * @version 1.0
+ * @date 2020/7/2 14:03
+ */
+public class NewsDo {
     private Long id;
 
     private String name;
@@ -25,7 +30,10 @@ public class Notices {
 
     private Integer channelsId;
 
-    private Integer parentId;
+    // 关联查询：实际上是不需要的
+    private String channelName;
+    // 关联查询
+    private String content;
 
     public Long getId() {
         return id;
@@ -40,7 +48,7 @@ public class Notices {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getTitle() {
@@ -48,7 +56,7 @@ public class Notices {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getSummary() {
@@ -56,7 +64,7 @@ public class Notices {
     }
 
     public void setSummary(String summary) {
-        this.summary = summary == null ? null : summary.trim();
+        this.summary = summary;
     }
 
     public String getAuthor() {
@@ -64,7 +72,7 @@ public class Notices {
     }
 
     public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
+        this.author = author;
     }
 
     public Long getCreatedid() {
@@ -104,7 +112,7 @@ public class Notices {
     }
 
     public void setPic(String pic) {
-        this.pic = pic == null ? null : pic.trim();
+        this.pic = pic;
     }
 
     public Integer getChannelsId() {
@@ -115,17 +123,25 @@ public class Notices {
         this.channelsId = channelsId;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public String getChannelName() {
+        return channelName;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
     public String toString() {
-        return "Notices{" +
+        return "NewsDo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
@@ -137,7 +153,8 @@ public class Notices {
                 ", modifiedtime=" + modifiedtime +
                 ", pic='" + pic + '\'' +
                 ", channelsId=" + channelsId +
-                ", parentId=" + parentId +
+                ", channelName='" + channelName + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }

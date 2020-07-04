@@ -1,7 +1,5 @@
 package com.lixwucs.muhu.bean;
 
-
-
 public class Channels {
     private Integer channelId;
 
@@ -41,5 +39,16 @@ public class Channels {
 
     public void setChannelParentId(Integer channelParentId) {
         this.channelParentId = channelParentId;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Channels{" +
+                "channelId=" + channelId +
+                ", channelName='" + channelName + '\'' +
+                ", noticesId=" + noticesId +
+                ", channelParentId=" + channelParentId +
+                '}';
     }
 }

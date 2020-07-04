@@ -1,7 +1,15 @@
 package com.lixwucs.muhu.service;
 
 
+import com.lixwucs.muhu.bean.Channels;
+import com.lixwucs.muhu.bean.Contents;
+import com.lixwucs.muhu.dao.ChannelsMapper;
+import com.lixwucs.muhu.dao.ContentsMapper;
+import com.lixwucs.muhu.service.iservice.ContentsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author helloLi
@@ -10,51 +18,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ContentsServiceImpl implements ContentsService {
+    @Autowired
+    private ContentsMapper contentsMapper;
+    @Override
+    public List<Contents> findAll() {
+        return contentsMapper.findAll();
+    }
 
-//    @Autowired
-//    private ContentsMapper contentsMapper;
-//
-//    @Override
-//    public int insert(Contents contents){
-//        int insert = contentsMapper.insert(contents);
-//        return insert;
-//    }
-//    @Override
-//    public Contents selectByPrimaryKey(Long id){
-//        Contents  contents = contentsMapper.selectByPrimaryKey(id);
-//        return contents;
-//    }
-//
-//    @Override
-//    public int deleteByPrimaryKey(Long id) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int insertSelective(Contents record) {
-//        return 0;
-//    }
-//    // 根据信息列表的-parentid存储，然后再才能查询出来，这个是后端应该做到的
-//    @Override
-//    public List<Contents> contList(Long channelId) {
-//        // 怎么设计可以返回一个list
-//        //先将所有parentid为channnelid的数据存储到list中
-//        List<Contents> contents = contentsMapper.contList(channelId);
-//        return contents;
-//    }
-//
-//    @Override
-//    public int updateByPrimaryKeySelective(Contents record) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int updateByPrimaryKeyWithBLOBs(Contents record) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int updateByPrimaryKey(Contents record) {
-//        return 0;
-//    }
+    @Override
+    public int insert(Contents contents) {
+        return contentsMapper.insert(contents);
+    }
+
+    @Override
+    public int insertSelective(Contents contents) {
+        return contentsMapper.insertSelective(contents);
+    }
 }

@@ -29,6 +29,6 @@ public class ChannelServiceImplTest {
     @Test
     public void findAll() {
         List<Channels> all = channelService.findAll();
-        System.out.println(all);
+        System.out.println(all.toString());
     }
 }

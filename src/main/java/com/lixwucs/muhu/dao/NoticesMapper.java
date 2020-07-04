@@ -1,20 +1,14 @@
 package com.lixwucs.muhu.dao;
 
 
+import com.lixwucs.muhu.bean.Channels;
 import com.lixwucs.muhu.bean.Notices;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 
 public interface NoticesMapper {
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Notices record);
-
-    int insertSelective(Notices record);
-
-    Notices selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Notices record);
-
-    int updateByPrimaryKey(Notices record);
+    List<Notices> findAll();
+    int insertSelective(Notices notices);
 }

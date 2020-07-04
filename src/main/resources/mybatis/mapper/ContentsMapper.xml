@@ -6,4 +6,41 @@
     <result column="notices_id" jdbcType="BIGINT" property="noticesId" />
   </resultMap>
 
+<select id="findAll" resultType="com.lixwucs.muhu.bean.Contents">
+  select id ,notices_id as noticesId,content from contents
+</select>
+
+  <insert id="insert" parameterType="com.lixwucs.muhu.bean.Contents">
+    insert into contents (notices_id ,content)
+    values (#{noticesId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.lixwucs.muhu.bean.Contents" >
+    insert into contents
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noticesId != null" >
+        notices_id,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noticesId != null" >
+        #{noticesId,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+
 </mapper>

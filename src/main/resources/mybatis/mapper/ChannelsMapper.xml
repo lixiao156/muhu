@@ -65,7 +65,7 @@
   </select>
 
   <select id="findAll" resultType="com.lixwucs.muhu.bean.Channels" >
-    select *  from  channels
+    select channel_id as channelId , channel_name as channelName, notices_id as noticesId, channel_parent_id as channelParentId  from  channels
 <!--    <where>-->
 <!--      <if test="channelId != null and channelId != ''"> and channel_id = #{channelId} </if>-->
 <!--      <if test="channelName != null and channelName != ''"> and channel_name = #{channelName} </if>-->

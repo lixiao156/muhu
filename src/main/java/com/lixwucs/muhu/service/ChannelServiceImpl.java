@@ -2,6 +2,7 @@ package com.lixwucs.muhu.service;
 
 import com.lixwucs.muhu.bean.Channels;
 import com.lixwucs.muhu.dao.ChannelsMapper;
+import com.lixwucs.muhu.service.iservice.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

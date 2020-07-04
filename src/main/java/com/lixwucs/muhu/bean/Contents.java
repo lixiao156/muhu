@@ -8,6 +8,16 @@ public class Contents {
 
     private String content;
 
+    public Contents() {
+    }
+
+    public Contents(Long id, Long noticesId, String content) {
+        this.id = id;
+        this.noticesId = noticesId;
+        this.content = content;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -30,5 +40,14 @@ public class Contents {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Contents{" +
+                "id=" + id +
+                ", noticesId=" + noticesId +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

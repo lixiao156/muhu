@@ -16,4 +16,96 @@
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
   </resultMap>
 
+  <select id="findAll" resultType="com.lixwucs.muhu.bean.Notices">
+  select id ,name,summary ,author, createdid,modifiedid,createdtime,modifiedtime, pic,channels_id as channelsId, parent_id as parent_id from Notices
+  </select>
+
+  <insert id="insert" parameterType="com.lixwucs.muhu.bean.Notices">
+    insert into contents (name ,title,summary,author,createdid,modifiedid,createdtime,modifiedtime,pic,channels_id,parent_id)
+    values (#{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},#{summary,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+    #{createdid,jdbcType=INTEGER}, #{modifiedid,jdbcType=VARCHAR},#{createdtime,jdbcType=DATE}, #{modifiedtime,jdbcType=DATE},
+     #{pic,jdbcType=VARCHAR}, #{channelsId,jdbcType=INTEGER},#{parentId,jdbcType=INTEGER})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.lixwucs.muhu.bean.Notices">
+    insert into notices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="createdid != null">
+        createdid,
+      </if>
+      <if test="modifiedid != null">
+        modifiedid,
+      </if>
+      <if test="createdtime != null">
+        createdtime,
+      </if>
+      <if test="modifiedtime != null">
+        modifiedtime,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="channelsId != null">
+        channels_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createdid != null">
+        #{createdid,jdbcType=BIGINT},
+      </if>
+      <if test="modifiedid != null">
+        #{modifiedid,jdbcType=BIGINT},
+      </if>
+      <if test="createdtime != null">
+        #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="modifiedtime != null">
+        #{modifiedtime,jdbcType=DATE},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="channelsId != null">
+        #{channelsId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
 </mapper>

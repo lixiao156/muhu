@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lixwucs.muhu.dao.MenuMapper" >
+    <resultMap id="BaseResultMap" type="com.lixwucs.muhu.bean.NewsDo">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="summary" jdbcType="VARCHAR" property="summary" />
+        <result column="author" jdbcType="VARCHAR" property="author" />
+        <result column="createdid" jdbcType="BIGINT" property="createdid" />
+        <result column="modifiedid" jdbcType="BIGINT" property="modifiedid" />
+        <result column="createdtime" jdbcType="DATE" property="createdtime" />
+        <result column="modifiedtime" jdbcType="DATE" property="modifiedtime" />
+        <result column="pic" jdbcType="VARCHAR" property="pic" />
+        <result column="channels_id" jdbcType="INTEGER" property="channelsId" />
+        <result column="channel_id" jdbcType="INTEGER" property="channelId" />
+        <result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+
+    </resultMap>
+    <insert id="insert" parameterType="com.lixwucs.muhu.bean.NewsDo">
+        insert into ()
+    </insert>
+
+    <select id="findNewsByChannelsId" parameterType="long" resultType="com.lixwucs.muhu.bean.NewsDo">
+      SELECT  n.id,n.name,n.title,n.summary,n.author,n.createdid,
+        n.modifiedid,n.modifiedtime,n.pic ,ch.`channel_name`,c.`content`
+
+        FROM notices AS n
+         LEFT JOIN  contents AS c
+         ON
+         c.notices_id = n.id
+         LEFT JOIN channels ch
+         ON ch.channel_id = n.channels_id
+        WHERE n.channels_id = #{channels_id}
+
+    </select>
+
+
+
+</mapper>
