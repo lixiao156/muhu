@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>门户首页</title>
 </head>
 <body>
-<#list ChannelsList as ch>
-    <li> ${ch.channelId},${ch.channelName}</li>
-    <li><a href="/news/${ch.channelId}" class="nva_parent_link">${ch.channelName}</a></li>
-</#list>
-<input type="file">
+<script language=javascript>
+    <!--
+    // open the related site windows
+    function mbar(sobj) {
+        var docurl =sobj.options[sobj.selectedIndex].value;
+        if (docurl != "") {
+            open(docurl,'_blank');
+            sobj.selectedIndex=0;
+            sobj.blur();
+        }
+    }
+    //-->
+</script>
+
+
+<Select onchange=" mbar(this)" name="select">
+    <#list ChannelsList as ch>
+        <OPTION value="/news/${ch.channelId}">${ch.channelName}</OPTION>
+    </#list>
+</Select>
 </body>
 </html>

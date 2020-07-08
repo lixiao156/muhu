@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author helloLi
@@ -25,6 +23,7 @@ public class NewsController {
     @Autowired
     private MenuMapper menuMapper;
 
+
     @RequestMapping(value = "/{ChannelsId}")
     public String findNewsByChannelsId(Model model, @PathVariable(value = "ChannelsId") Long ChannelsId){
         List<NewsDo> newsByChannelsId = menuMapper.findNewsByChannelsId(ChannelsId);
@@ -35,14 +34,15 @@ public class NewsController {
     @RequestMapping(value = "/test")
     public String findNewsByChannels(){
 
-        return "test";
+        return "showsNews";
     }
 
 
     @RequestMapping(value = "/NewsDo")
-    public String insertNews(Model model, NewsDo newsDo){
-        String author = newsDo.getAuthor();
-        model.addAttribute("hh",author);
-        return "test";
+    @ResponseBody
+    public List<NewsDo> searchNews(NewsDo newsDo){
+        List<NewsDo> newsByChannelsId = menuMapper.findNewsByChannelsId(1l);
+//        model.addAttribute("hh",author);
+        return newsByChannelsId;
     }
 }
